@@ -50,6 +50,8 @@ fsdkTracker.SetParameters( # set realtime face detection parameters
 	InternalResizeWidth=256, FaceDetectionThreshold=5
 )
 
+print('ini reno')
+
 need_to_exit = False
 
 def WndProc(hWnd, message, wParam, lParam):
@@ -178,13 +180,17 @@ trackers = {}
 while 1:
 	img = camera.GrabFrame()
 	surfGr.resetClip().drawImage(win.Bitmap.FromHBITMAP(img.GetHBitmap())) # fill backsurface with image
-
+	# print('halo')
 	faces = frozenset(fsdkTracker.FeedFrame(0, img)) # recognize all faces in the image
-	for face_id in faces.difference(trackers): trackers[face_id] = FaceLocator(face_id) # create new trackers
+	for face_id in faces.difference(trackers): 
+		trackers[face_id] = FaceLocator(face_id) # create new trackers
+		# print (face_id)
 
 	missed, gpath = [], win.GraphicsPath()
 	for face_id, tracker in trackers.items(): # iterate over current trackers
-		if face_id in faces: tracker.draw(surfGr, gpath, face_id) #fsdkTracker.GetFacialFeatures(face_id)) # draw existing tracker
+		if face_id in faces: 
+			tracker.draw(surfGr, gpath, face_id) #fsdkTracker.GetFacialFeatures(face_id)) # draw existing tracker
+			print(fsdkTracker.GetName(tracker.fid))
 		else: missed.append(face_id)
 	for mt in missed: # find and remove trackers that are not active anymore
 		st = trackers[mt]
