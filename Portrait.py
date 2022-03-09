@@ -2,7 +2,7 @@ from __future__ import print_function # for compatability with Python 2.x
 import sys
 from fsdk import FSDK
 
-license_key = "e4TJ9OHONH4fpsIGQ65eMepWtv59h40suTx13apLZndVuyY4yiEYX6Z9v71PiC/2xX/yZlaLPhLmKPlZtLPJ9nbvK9iCnGSn9YeBtcueDpVerMZ7YBmwqVniPDeaF1bxD1y22rdGk4GL4cx6Zi39fkmkCnF8vjqOt3feNJ5nm2U="
+license_key = "GQhpyOPlWh/TE2tYXrlNYc3gDXNlvp9jpQMtdLCoDsDfSk0bIGeM2EK7f6pllPxKbMvgF7npGj3lHBSw0Ik/9PzNK1XT+NH2uNYCW4qoiexEeCryVCqNGpUFhBWxCDqWwrUVBX+u9iuExcIRZUAUyblQ9WiOTY9a6yhSg/nxlSw="
 
 if len(sys.argv) < 2:
 	print("Usage: portrait.py <in_file> [out_file]") # default out_file name is 'face.in_file'

@@ -2,7 +2,7 @@ from __future__ import print_function # for compatability with Python 2.x
 import sys, os.path, base64
 from fsdk import FSDK
 
-license_key = "e4TJ9OHONH4fpsIGQ65eMepWtv59h40suTx13apLZndVuyY4yiEYX6Z9v71PiC/2xX/yZlaLPhLmKPlZtLPJ9nbvK9iCnGSn9YeBtcueDpVerMZ7YBmwqVniPDeaF1bxD1y22rdGk4GL4cx6Zi39fkmkCnF8vjqOt3feNJ5nm2U="
+license_key = "GQhpyOPlWh/TE2tYXrlNYc3gDXNlvp9jpQMtdLCoDsDfSk0bIGeM2EK7f6pllPxKbMvgF7npGj3lHBSw0Ik/9PzNK1XT+NH2uNYCW4qoiexEeCryVCqNGpUFhBWxCDqWwrUVBX+u9iuExcIRZUAUyblQ9WiOTY9a6yhSg/nxlSw="
 db_filename = "faces.db"
 
 if len(sys.argv) not in (2, 3):
@@ -49,6 +49,6 @@ if option == '-r': # remove photo from database
 # find and print top 20 most similar face files
 src = ((n, FSDK.FaceTemplate(*base64.b64decode(ft))) for n, ft in base.items())
 matches = sorted(((face_template.Match(ft)*100, n) for n, ft in src), reverse = True)[:20]
-
+print(base)
 print('\nFound similarities:', len(matches) or None)
 for match in matches: print('%i%%\t%s'%match)

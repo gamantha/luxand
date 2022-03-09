@@ -5,7 +5,7 @@ if not fsdk.windows:
 	print('This program requiers to be run under Microsoft Windows.'); exit(1)
 import win
 
-license_key = "e4TJ9OHONH4fpsIGQ65eMepWtv59h40suTx13apLZndVuyY4yiEYX6Z9v71PiC/2xX/yZlaLPhLmKPlZtLPJ9nbvK9iCnGSn9YeBtcueDpVerMZ7YBmwqVniPDeaF1bxD1y22rdGk4GL4cx6Zi39fkmkCnF8vjqOt3feNJ5nm2U="
+license_key = "GQhpyOPlWh/TE2tYXrlNYc3gDXNlvp9jpQMtdLCoDsDfSk0bIGeM2EK7f6pllPxKbMvgF7npGj3lHBSw0Ik/9PzNK1XT+NH2uNYCW4qoiexEeCryVCqNGpUFhBWxCDqWwrUVBX+u9iuExcIRZUAUyblQ9WiOTY9a6yhSg/nxlSw="
 
 
 if len(sys.argv) < 2:
@@ -28,6 +28,8 @@ print("Detecting faces...")
 faces = img.DetectMultipleFaces() # detect all faces in the image
 if faces:
 	print(len(faces), "face(s) found")
+	for face in faces:
+		print(face)
 else:
 	print("No faces found")
 	exit(1)

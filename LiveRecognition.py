@@ -2,7 +2,7 @@ from __future__ import print_function
 import sys, fsdk, math, ctypes, time
 from fsdk import FSDK
 
-license_key = "e4TJ9OHONH4fpsIGQ65eMepWtv59h40suTx13apLZndVuyY4yiEYX6Z9v71PiC/2xX/yZlaLPhLmKPlZtLPJ9nbvK9iCnGSn9YeBtcueDpVerMZ7YBmwqVniPDeaF1bxD1y22rdGk4GL4cx6Zi39fkmkCnF8vjqOt3feNJ5nm2U="
+license_key = "gmAf9xmdHBQl8h9YB8wuskz09GFfPxLr4uPUvUwaP3u74WfPLHB77lMO/O2PV4u53ETa+scdQkDhho8j80O7nplhWgEnIQhH+QBAPl7ORAgXDMs10HylgOHZ86lnqzjxlWegTTupeny8gbjK1hLP32dCP+c4RDWWf+fLS9hXblY="
 
 if not fsdk.windows:
 	print('The program is for Microsoft Windows.'); exit(1)
