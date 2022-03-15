@@ -52,10 +52,10 @@ else:
 
 
 for path in pathlib.Path("haystack").iterdir():
-    if path.is_file() and (str(path) != "haystack\.gitignore"):
+    if path.is_file() and (os.path.basename(path)!= ".gitignore"):
         # current_file = open(path, "r")
         print('\n' + str(path))
-        # print(os.path.basename(path))
+        print(os.path.basename(path))
         # current_file.close()
         filename1 = os.path.normcase(path)
         img = FSDK.Image(filename1)
