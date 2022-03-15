@@ -44,7 +44,12 @@ if option not in ('','-a','-r'): print('Unrecognized option:', option); exit(-1)
 # gdiplus = win.GDIPlus() # initialize GDI+
 top_match = 20 #find n top match
 
-os.remove('output/output.jpeg')
+if (os.path.isfile('output/output.jpeg')):
+    print('is file')
+    os.remove('output/output.jpeg')
+else:
+    print("no-file")
+
 
 for path in pathlib.Path("haystack").iterdir():
     if path.is_file():
