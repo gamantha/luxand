@@ -44,9 +44,9 @@ if option not in ('','-a','-r'): print('Unrecognized option:', option); exit(-1)
 # gdiplus = win.GDIPlus() # initialize GDI+
 top_match = 20 #find n top match
 
-if (os.path.isfile('output\output.jpeg')):
+if (os.path.isfile('/output/output.jpeg')):
     print('is file')
-    os.remove('output/output.jpeg')
+    os.remove('./output/output.jpeg')
 else:
     print("no-file")
 
@@ -94,15 +94,9 @@ for path in pathlib.Path("haystack").iterdir():
                 if percent > 95 :
                     print(n + " : " + str(percent))
                     draw_features(img.DetectFacialFeatures(p), draw)
-        # del graphics
 
-        # img = FSDK.Image(bmp.GetHBITMAP())
 
-        # im = PIL.Image.open('haystack/group1.jpeg')
-        # draw = ImageDraw.Draw(im)
-
-        # draw.pieslice((15, 50, 140, 175), start=30, end=330, fill=(255, 255, 0))
-        im.save('output\output.jpeg', quality=95)
+        im.save('./output/output.jpeg', quality=95)
         # img.SaveToFile('output/output.jpeg', quality=85)  # save face image to file with given compression quality
         face_template = FSDK.Image(filename1).GetFaceTemplate()  # get template of detected face
 
