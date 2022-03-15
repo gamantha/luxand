@@ -3,7 +3,7 @@ import sys, math, os.path, base64, pathlib
 from fsdk import FSDK
 import PIL
 from PIL import ImageDraw
-import win
+# import win
 
 license_key = "GQhpyOPlWh/TE2tYXrlNYc3gDXNlvp9jpQMtdLCoDsDfSk0bIGeM2EK7f6pllPxKbMvgF7npGj3lHBSw0Ik/9PzNK1XT+NH2uNYCW4qoiexEeCryVCqNGpUFhBWxCDqWwrUVBX+u9iuExcIRZUAUyblQ9WiOTY9a6yhSg/nxlSw="
 db_filename = "search.db"
@@ -41,7 +41,7 @@ if option not in ('','-a','-r'): print('Unrecognized option:', option); exit(-1)
 # 2 baris dibawah originalnya untuk buka file untuk di match
 # filename = os.path.normcase(os.path.abspath(sys.argv[1]))
 # face_template = FSDK.Image(filename).GetFaceTemplate() # get template of detected face
-gdiplus = win.GDIPlus() # initialize GDI+
+# gdiplus = win.GDIPlus() # initialize GDI+
 top_match = 20 #find n top match
 
 for path in pathlib.Path("haystack").iterdir():
@@ -55,12 +55,12 @@ for path in pathlib.Path("haystack").iterdir():
         im = PIL.Image.open(filename1)
         draw = ImageDraw.Draw(im)
         faces = img.DetectMultipleFaces()
-        bmp = win.Bitmap.FromHBITMAP(img.GetHBitmap())
-        graphics = win.Graphics(bmp=bmp).setSmoothing(True)
-        facePen, featurePen = win.Pen(0xffb0b0b0, 5), win.Pen(0xffffff00, 1.8)
+        # bmp = win.Bitmap.FromHBITMAP(img.GetHBitmap())
+        # graphics = win.Graphics(bmp=bmp).setSmoothing(True)
+        # facePen, featurePen = win.Pen(0xffb0b0b0, 5), win.Pen(0xffffff00, 1.8)
 
 
-        def draw_features(graph, f,draw):
+        def draw_features(f,draw):
             def dot_center(dots):  # calc geometric center of dots
                 return sum(p.x for p in dots) / len(dots), sum(p.y for p in dots) / len(dots)
 
@@ -71,9 +71,9 @@ for path in pathlib.Path("haystack").iterdir():
             center = (xr + xl) / 2, (yr + yl) / 2 + w * 0.05
             angle = math.atan2(yr - yl, xr - xl) * 180 / math.pi
             frame = -w / 2, -h / 2, w / 2, h / 2
-            container = graph.beginContainer()
-            graph.translateTransform(*center).rotateTransform(angle).ellipse(facePen, *frame)  # draw frame
-            graph.endContainer(container)
+            # container = graph.beginContainer()
+            # graph.translateTransform(*center).rotateTransform(angle).ellipse(facePen, *frame)  # draw frame
+            # graph.endContainer(container)
             draw.rectangle((xl-w/2, yl-h/2, xl+w, yr+h*0.8), fill=None, outline="red")
             print(xl, yl, xr, yr)
             # for p in f: graph.circle(featurePen, p.x, p.y, 3)  # draw features
@@ -86,10 +86,10 @@ for path in pathlib.Path("haystack").iterdir():
                 percent = template.Match(ft) * 100
                 if percent > 95 :
                     print(n + " : " + str(percent))
-                    draw_features(graphics, img.DetectFacialFeatures(p), draw)
-        del graphics
+                    draw_features(img.DetectFacialFeatures(p), draw)
+        # del graphics
 
-        img = FSDK.Image(bmp.GetHBITMAP())
+        # img = FSDK.Image(bmp.GetHBITMAP())
 
         # im = PIL.Image.open('haystack/group1.jpeg')
         # draw = ImageDraw.Draw(im)
