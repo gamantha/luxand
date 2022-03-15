@@ -44,6 +44,8 @@ if option not in ('','-a','-r'): print('Unrecognized option:', option); exit(-1)
 # gdiplus = win.GDIPlus() # initialize GDI+
 top_match = 20 #find n top match
 
+os.remove('output/output.jpeg')
+
 for path in pathlib.Path("haystack").iterdir():
     if path.is_file():
         # current_file = open(path, "r")
@@ -58,7 +60,7 @@ for path in pathlib.Path("haystack").iterdir():
         # bmp = win.Bitmap.FromHBITMAP(img.GetHBitmap())
         # graphics = win.Graphics(bmp=bmp).setSmoothing(True)
         # facePen, featurePen = win.Pen(0xffb0b0b0, 5), win.Pen(0xffffff00, 1.8)
-
+        # im.save('output/output.jpeg', quality=95)
 
         def draw_features(f,draw):
             def dot_center(dots):  # calc geometric center of dots
