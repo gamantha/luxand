@@ -52,7 +52,7 @@ else:
 
 
 for path in pathlib.Path("haystack").iterdir():
-    if path.is_file():
+    if path.is_file() and (str(path) != "haystack\.gitignore"):
         # current_file = open(path, "r")
         print('\n' + str(path))
         # print(os.path.basename(path))
