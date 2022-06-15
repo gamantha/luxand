@@ -5,7 +5,13 @@ import os
 import glob
 import ffmpeg
 
-license_key = "gmAf9xmdHBQl8h9YB8wuskz09GFfPxLr4uPUvUwaP3u74WfPLHB77lMO/O2PV4u53ETa+scdQkDhho8j80O7nplhWgEnIQhH+QBAPl7ORAgXDMs10HylgOHZ86lnqzjxlWegTTupeny8gbjK1hLP32dCP+c4RDWWf+fLS9hXblY="
+from os import environ, path
+from dotenv import load_dotenv
+
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, '.env'))
+license_key = environ.get('license_key')
+
 db_filename = "search.db"
 
 # fps = 1 --> i frame per sec

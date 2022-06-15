@@ -2,7 +2,13 @@ from __future__ import print_function
 import sys, fsdk, math, ctypes, time
 from fsdk import FSDK
 
-license_key = "gmAf9xmdHBQl8h9YB8wuskz09GFfPxLr4uPUvUwaP3u74WfPLHB77lMO/O2PV4u53ETa+scdQkDhho8j80O7nplhWgEnIQhH+QBAPl7ORAgXDMs10HylgOHZ86lnqzjxlWegTTupeny8gbjK1hLP32dCP+c4RDWWf+fLS9hXblY="
+from os import environ, path
+from dotenv import load_dotenv
+
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, '.env'))
+license_key = environ.get('license_key')
+
 
 if not fsdk.windows:
 	print('The program is for Microsoft Windows.'); exit(1)

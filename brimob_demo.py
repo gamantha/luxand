@@ -5,7 +5,14 @@ import PIL
 from PIL import ImageDraw
 # import win
 
-license_key = "GQhpyOPlWh/TE2tYXrlNYc3gDXNlvp9jpQMtdLCoDsDfSk0bIGeM2EK7f6pllPxKbMvgF7npGj3lHBSw0Ik/9PzNK1XT+NH2uNYCW4qoiexEeCryVCqNGpUFhBWxCDqWwrUVBX+u9iuExcIRZUAUyblQ9WiOTY9a6yhSg/nxlSw="
+from os import environ, path
+from dotenv import load_dotenv
+
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, '.env'))
+license_key = environ.get('license_key')
+
+# license_key = "fVrFCzYC5wOtEVspKM/zfLWVcSIZA4RNqx74s+QngdvRiCC7z7MHlSf2w3+OUyAZkTFeD4kSpfVPcRVIqAKWUZzJG975b/P4HNNzpl11edXGIyGrTO/DImoZksDSRs6wktvgr8lnNCB5IukIPV5j/jBKlgL5aqiwSfyCR8UdC9s="
 db_filename = "search.db"
 
 print("Initializing FSDK... ", end='')

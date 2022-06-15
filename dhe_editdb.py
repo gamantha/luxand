@@ -2,7 +2,13 @@ from __future__ import print_function # for compatability with Python 2.x
 import sys, os.path, base64
 from fsdk import FSDK
 
-license_key = "e4TJ9OHONH4fpsIGQ65eMepWtv59h40suTx13apLZndVuyY4yiEYX6Z9v71PiC/2xX/yZlaLPhLmKPlZtLPJ9nbvK9iCnGSn9YeBtcueDpVerMZ7YBmwqVniPDeaF1bxD1y22rdGk4GL4cx6Zi39fkmkCnF8vjqOt3feNJ5nm2U="
+from os import environ, path
+from dotenv import load_dotenv
+
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, '.env'))
+license_key = environ.get('license_key')
+
 db_filename = "faces.db"
 
 if len(sys.argv) not in (2, 3):
