@@ -50,7 +50,7 @@ FSDK.SetFaceDetectionThreshold(3)
 
 
 top_match = 20 #find n top match
-for path in pathlib.Path("videotosearch").iterdir():
+for path in pathlib.Path("haystack-video").iterdir():
     if path.is_file():
         print('\n' + str(path))
         # ffmpeg -i .\video1.mp4 -filter:v fps=fps=1 thumb%04d.jpg
