@@ -2,7 +2,12 @@ from __future__ import print_function # for compatability with Python 2.x
 import sys
 from fsdk import FSDK
 
-license_key = "GQhpyOPlWh/TE2tYXrlNYc3gDXNlvp9jpQMtdLCoDsDfSk0bIGeM2EK7f6pllPxKbMvgF7npGj3lHBSw0Ik/9PzNK1XT+NH2uNYCW4qoiexEeCryVCqNGpUFhBWxCDqWwrUVBX+u9iuExcIRZUAUyblQ9WiOTY9a6yhSg/nxlSw="
+from os import environ, path
+from dotenv import load_dotenv
+
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, '.env'))
+license_key = environ.get('license_key')
 
 if len(sys.argv) < 2:
 	print("Usage: portrait.py <in_file> [out_file]") # default out_file name is 'face.in_file'

@@ -22,7 +22,7 @@ FSDK.ActivateLibrary(license_key);
 FSDK.Initialize()
 print("OK\nLicense info:", FSDK.GetLicenseInfo())
 
-for path in pathlib.Path("needle").iterdir():
+for path in pathlib.Path("needle-video").iterdir():
     print(path)
     if path.is_file():
         # print(path)
@@ -64,6 +64,24 @@ for path in pathlib.Path("haystack-video").iterdir():
                 .run()
         )
 
+        def draw_features(f,draw):
+            def dot_center(dots):  # calc geometric center of dots
+                return sum(p.x for p in dots) / len(dots), sum(p.y for p in dots) / len(dots)
+
+            xl, yl = dot_center([f[k] for k in FSDK.FSDKP_LEFT_EYE_SET])
+            xr, yr = dot_center([f[k] for k in FSDK.FSDKP_RIGHT_EYE_SET])
+            w = (xr - xl) * 2.8
+            h = w * 1.4
+            center = (xr + xl) / 2, (yr + yl) / 2 + w * 0.05
+            angle = math.atan2(yr - yl, xr - xl) * 180 / math.pi
+            frame = -w / 2, -h / 2, w / 2, h / 2
+            # container = graph.beginContainer()
+            # graph.translateTransform(*center).rotateTransform(angle).ellipse(facePen, *frame)  # draw frame
+            # graph.endContainer(container)
+            draw.rectangle((xl-w/2, yl-h/2, xl+w, yr+h*0.8), fill=None, outline="red")
+            print(xl, yl, xr, yr)
+            # for p in f: graph.circle(featurePen, p.x, p.y, 3)  # draw features
+            
         for path in pathlib.Path("videoframestemp").iterdir():
             if path.is_file():
 
@@ -89,5 +107,5 @@ a_file.truncate()
 a_file.close()
 
 files = glob.glob('videoframestemp/*')
-for f in files:
-    os.remove(f)
+# for f in files:
+#     os.remove(f)
